@@ -31,68 +31,20 @@ npm run build
 
 Este comando cria uma pasta `out` com os arquivos estáticos da aplicação.
 
-## Publicando no GitHub Pages
+## Publicando na Vercel
 
-Para publicar o projeto no GitHub Pages, siga os passos abaixo:
+A Vercel é a plataforma recomendada para fazer o deploy de aplicações Next.js.
 
-1. **Instale a biblioteca `gh-pages`:**
+1.  **Crie uma conta na Vercel:**
 
-   ```bash
-   npm install gh-pages --save-dev
-   ```
+    Acesse [vercel.com](https://vercel.com) e crie uma conta (você pode usar sua conta do GitHub).
 
-2. **Configure o `package.json`:**
+2.  **Importe o projeto:**
 
-   Adicione as seguintes propriedades ao seu `package.json`:
+    No dashboard da Vercel, clique em "Add New..." > "Project". Conecte sua conta do GitHub e selecione o repositório `gemini-cli-stocks`.
 
-   ```json
-   {
-     "homepage": "https://<seu-usuario-github>.github.io/<seu-repositorio>",
-     // ...
-   }
-   ```
+3.  **Configure e faça o deploy:**
 
-   Adicione os seguintes scripts ao seu `package.json`:
+    A Vercel irá detectar automaticamente que é um projeto Next.js e preencher as configurações de build. Você não precisa alterar nada. Clique em "Deploy".
 
-   ```json
-   {
-     "scripts": {
-       // ...
-       "predeploy": "npm run build",
-       "deploy": "gh-pages -d out"
-     }
-   }
-   ```
-
-3. **Configure o `next.config.mjs`:**
-
-   Adicione a seguinte configuração ao seu `next.config.mjs` para garantir que os assets sejam carregados corretamente no GitHub Pages:
-
-   ```javascript
-   /** @type {import('next').NextConfig} */
-   const nextConfig = {
-     output: 'export',
-     // Optional: Add a trailing slash to all paths `/about` -> `/about/`
-     // trailingSlash: true,
-     // Optional: Change the output directory `out` -> `dist`
-     // distDir: 'dist',
-   }
-
-   export default nextConfig
-   ```
-
-4. **Faça o deploy:**
-
-   Execute o comando de deploy:
-
-   ```bash
-   npm run deploy
-   ```
-
-   Este comando irá criar uma branch `gh-pages` em seu repositório e publicar os arquivos da pasta `out` nela.
-
-5. **Configure o GitHub Pages:**
-
-   No seu repositório do GitHub, vá em "Settings" > "Pages". Em "Source", selecione a branch `gh-pages` e a pasta `/ (root)`. Salve as alterações.
-
-   Sua aplicação estará disponível em `https://<seu-usuario-github>.github.io/<seu-repositorio>`.
+    A Vercel irá construir e publicar sua aplicação. Ao final do processo, você receberá uma URL para acessar sua aplicação online.
